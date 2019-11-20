@@ -87,6 +87,17 @@
                itmno.addEventListener('click', function (e) {
                  console.log('clt1 click');
                }, false);
+	       // 取得容器
+               var myList = document.getElementById('myList');
+
+               // 改讓外層 myList 來監聽 click 事件
+               myList.addEventListener('click', function(e){
+               // 判斷目標元素若是 li 則執行 console.log
+              if( e.target.tagName.toLowerCase() === 'li' ){
+                console.log(e.target.textContent);
+              }
+  }
+}
 		
 	}
 </script>
@@ -96,7 +107,7 @@
 		
 		<!-- 图片设置 -->
 		<div class="content">
-			<ul>
+			<ul  id="myList">
 				<li id="clt1"><img src="images/slidepic1.jpg" alt="" /></li>
 				<li id="clt2"><img src="images/slidepic2.jpg" alt="" /></li>
 				<li id="clt3"><img src="images/slidepic3.jpg" alt="" /></li>
