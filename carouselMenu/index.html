@@ -80,6 +80,13 @@
 			}
 			refreshImageLocation(index);
 		}
+
+               // 
+               var itmno = document.querySelector('#clt1');
+
+               itmno.addEventListener('click', function (e) {
+                 console.log('clt1 click');
+               }, false);
 		
 	}
 </script>
@@ -90,11 +97,11 @@
 		<!-- 图片设置 -->
 		<div class="content">
 			<ul>
-				<li><img src="images/slidepic1.jpg" alt="" /></li>
-				<li><img src="images/slidepic2.jpg" alt="" /></li>
-				<li><img src="images/slidepic3.jpg" alt="" /></li>
-				<li><img src="images/slidepic4.jpg" alt="" /></li>
-				<li><img src="images/slidepic5.jpg" alt="" /></li>
+				<li id="clt1"><img src="images/slidepic1.jpg" alt="" /></li>
+				<li id="clt2"><img src="images/slidepic2.jpg" alt="" /></li>
+				<li id="clt3"><img src="images/slidepic3.jpg" alt="" /></li>
+				<li id="clt4"><img src="images/slidepic4.jpg" alt="" /></li>
+				<li id="clt5"><img src="images/slidepic5.jpg" alt="" /></li>
 			</ul>
 		</div>
 		
