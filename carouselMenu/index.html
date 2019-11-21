@@ -93,11 +93,11 @@
 
                // 改讓外層 myList 來監聽 click 事件. parentNode
                myList.addEventListener('click', function(e){
-		 console.log(['tagName', e.target.tagName]);
+		 //console.log(['tagName', e.target.tagName]); // "IMG"
                  // 判斷目標元素若是 li 則執行 console.log
-                if( e.target.tagName.toLowerCase() === 'li' ){
-                  console.log(e.target.id);
-		}
+                 if( e.target.tagName.parentNod.toLowerCase() == 'li' ){
+                    console.log([index e.target.id]);
+		  }
                }, false);
 		
 	}
