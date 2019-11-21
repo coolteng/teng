@@ -30,8 +30,10 @@ ul{list-style: none;}
 	position: absolute;
 
 }
+/* Because the image has a z-index of -1, it will be placed behind the heading */
 .box .content li img{
 	width: 100%;
+	z-index: -1;
 }
 
 /*可以通过css设置定位
