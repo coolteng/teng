@@ -1,4 +1,4 @@
-{location: [{
+var json = [{
 			width: 300,
 			opacity: 0.4,
 			top: 70,
@@ -28,5 +28,4 @@
 			top: 70,
 			left: 650,
 			zIndex: 1
-		}]
-}
+		}];
