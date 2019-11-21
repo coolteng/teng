@@ -98,8 +98,9 @@
 		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
                  //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
                  if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
-                    // debug
-	            console.log([index, e.target.parentNode.id]);
+                    // debug  //最後一個字元
+		    var clt = e.target.parentNode.id;
+	            console.log([index, parseInt(clt.charAt(clt.length-1))]);
 		  }
                }, false);
 		
@@ -112,11 +113,11 @@
 		<!-- 图片设置 -->
 		<div class="content">
 			<ul  id="myList">
-				<li id="clt1"><img src="images/slidepic1.jpg" alt="" /></li>
-				<li id="clt2"><img src="images/slidepic2.jpg" alt="" /></li>
-				<li id="clt3"><img src="images/slidepic3.jpg" alt="" /></li>
-				<li id="clt4"><img src="images/slidepic4.jpg" alt="" /></li>
-				<li id="clt5"><img src="images/slidepic5.jpg" alt="" /></li>
+				<li id="clt0"><img src="images/slidepic1.jpg" alt="" /></li>
+				<li id="clt1"><img src="images/slidepic2.jpg" alt="" /></li>
+				<li id="clt2"><img src="images/slidepic3.jpg" alt="" /></li>
+				<li id="clt3"><img src="images/slidepic4.jpg" alt="" /></li>
+				<li id="clt4"><img src="images/slidepic5.jpg" alt="" /></li>
 			</ul>
 		</div>
 		
