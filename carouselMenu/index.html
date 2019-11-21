@@ -82,7 +82,15 @@
 			refreshImageLocation(index);
 		}
 
-               // 
+               //
+	       var menuName = {
+		       "clt0": "menuName0",
+		       "clt1": "menuName1",
+		       "clt2": "menuName2",
+		       "clt3": "menuName3",
+		       "clt4": "menuName4"
+	       };
+	       //
                var itmno = document.querySelector('#clt1');
 
                itmno.addEventListener('click', function (e) {
@@ -98,9 +106,11 @@
 		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
                  //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
                  if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
-                    // debug  //最後一個字元
+                    // debug  //取id屬性字串最後一個字元
 		    var clt = e.target.parentNode.id;
 	            console.log([index, parseInt(clt.charAt(clt.length-1))]);
+		    //  以關鍵字取得對應的內容
+		    console.log(clt, menuName[clt]);
 		  }
                }, false);
 		
