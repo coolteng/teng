@@ -6,9 +6,10 @@
 <link rel="stylesheet" href="css/index.css" />
 <script type = 'text/javascript' src = 'select.js'></script>
 <script type = 'text/javascript' src = 'animate.js'></script>
-
+<script type = 'text/javascript' src = 'location.json'></script>
 <script>
 	window.onload =function () {
+		/*
 		//定位置 五个位置对应五个json对象,放入数组中,可以灵活的获取这些json对象
 		var json = [{
 			width: 300,
@@ -41,7 +42,7 @@
 			left: 650,
 			zIndex: 1
 		}];
-
+                */
 		refreshImageLocation(0);
 		function refreshImageLocation(index){
 			//默认情况下 第i个对应i-index个位置
@@ -90,8 +91,9 @@
 	       // 取得容器
                var myList = document.getElementById('myList');
 
-               // 改讓外層 myList 來監聽 click 事件
+               // 改讓外層 myList 來監聽 click 事件. parentNode
                myList.addEventListener('click', function(e){
+		 console.log(console.log(['tagName', e.target.tagName]);
                  // 判斷目標元素若是 li 則執行 console.log
                 if( e.target.tagName.toLowerCase() === 'li' ){
                   console.log(e.target.id);
