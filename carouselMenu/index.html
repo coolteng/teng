@@ -108,9 +108,17 @@
                  if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
                     // debug  //取id屬性字串最後一個字元
 		    var clt = e.target.parentNode.id;
-	            console.log([index, parseInt(clt.charAt(clt.length-1))]);
+		    var  iMenu = parseInt(clt.charAt(clt.length-1));
+	            console.log([index, iMenu]);
 		    //  以關鍵字取得對應的內容
 		    console.log(clt, menuName[clt]);
+		    // 被點圖片會居於中央位置來顯示
+		    if(iMenu >= 2) {
+		      index=iMenu-2; // 01'2', 12'3', 23'4'
+		    }else {
+		      index=3+iMenu; // 34'0', 40'1'
+		    }
+		    refreshImageLocation(index);
 		  }
                }, false);
 		
