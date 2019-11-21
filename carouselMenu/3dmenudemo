@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="css/index.css" />
+<script type = 'text/javascript' src = 'select.js'></script>
+<script type = 'text/javascript' src = 'animate.js'></script>
+<script type = 'text/javascript' src = 'location.json'></script>
+<script>
+	window.onload =function () {
+		/*
+		//定位置 五个位置对应五个json对象,放入数组中,可以灵活的获取这些json对象
+		var json = [{
+			width: 300,
+			opacity: 0.4,
+			top: 70,
+			left: 50,
+			zIndex: 1
+		},{
+			width: 400,
+			opacity: 0.7,
+			top: 150,
+			left: 20,
+			zIndex: 2
+		},{
+			width: 650,
+			opacity: 1,
+			top: 200,
+			left: 150,
+			zIndex: 3
+		},{
+			width: 400,
+			opacity: 0.7,
+			top: 150,
+			left: 520,
+			zIndex: 2
+		},{
+			width: 300,
+			opacity: 0.4,
+			top: 70,
+			left: 650,
+			zIndex: 1
+		}];
+                */
+		refreshImageLocation(0);
+		function refreshImageLocation(index){
+			//默认情况下 第i个对应i-index个位置
+			var liArr = $('li');
+			console.log(liArr);
+			for(var i = 0; i < liArr.length; i++){
+				var li = liArr[i];
+				var locationIndex = i - index;
+
+				if(locationIndex < 0){
+					locationIndex += 5;
+				}
+
+				var locationDate = json[locationIndex];
+				console.log(locationDate);
+
+				animate(li, locationDate, null);
+			}
+		}
+
+		var index = 0;
+		//设置点击箭头事件
+		$('#prev').onclick = function(){
+			// console.log('#next');
+			index++;
+			if(index == 5){ // 圖片總數目受定位json裡的組數限制
+				index = 0;
+			}
+			refreshImageLocation(index);
+		}
+
+		$('#next').onclick = function(){
+			index--;
+			if(index < 0){
+				index = 4;
+			}
+			refreshImageLocation(index);
+		}
+
+               //
+	       var menuName = {
+		       "clt0": "menuName0",
+		       "clt1": "menuName1",
+		       "clt2": "menuName2",
+		       "clt3": "menuName3",
+		       "clt4": "menuName4"
+	       };
+	       //
+               var itmno = document.querySelector('#clt1');
+
+               itmno.addEventListener('click', function (e) {
+                 console.log('clt1 click');
+               }, false);
+	       // 取得容器
+               var myList = document.getElementById('myList');
+
+               // 改讓外層 myList 來監聽 click 事件. parentNode
+               myList.addEventListener('click', function(e){
+		 //console.log(['tagName', e.target.tagName]); // "IMG"
+                 // 判斷目標元素若是 li 則執行 console.log
+		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
+                 //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
+                 if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
+                    // debug  //取id屬性字串最後一個字元
+		    var clt = e.target.parentNode.id;
+		    var  iMenu = parseInt(clt.charAt(clt.length-1));
+	            console.log([index, iMenu]);
+		    //  以關鍵字取得對應的內容
+		    console.log(clt, menuName[clt]);
+		    // 被點圖片會居於中央位置來顯示
+		    if(iMenu >= 2) {
+		      index=iMenu-2; // 01'2', 12'3', 23'4'
+		    }else {
+		      index=3+iMenu; // 34'0', 40'1'
+		    }
+		    refreshImageLocation(index);
+		  }
+               }, false);
+		
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		
+		<!-- 图片设置 -->
+		<div class="content">
+			<ul  id="myList">
+				<li id="clt0"><img src="images/cltFACEBOOK.PNG" alt="" /></li>
+				<li id="clt1"><img src="images/tengYouTube.PNG" alt="" /></li>
+				<li id="clt2"><img src="images/cooltengSplash.png" alt="" /></li>
+				<li id="clt3"><img src="images/擷取m00.PNG" alt="" /></li>
+				<li id="clt4"><img src="images/cltORCID.PNG" alt="" /></li>
+			</ul>
+		</div>
+		
+		<!-- 左右箭头设置 -->
+		<div class="control">
+			<a href="javascript:;" id="prev"></a>
+			<a href="javascript:;" id="next"></a>
+		</div>
+	</div>
+</body>
+</html>
