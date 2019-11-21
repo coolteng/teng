@@ -95,7 +95,7 @@
                myList.addEventListener('click', function(e){
 		 //console.log(['tagName', e.target.tagName]); // "IMG"
                  // 判斷目標元素若是 li 則執行 console.log
-                 if( e.target.tagName.parentNode.tagName.toLowerCase() == 'li' ){
+                 if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
                     // debug
 	            console.log([index, e.target.id]);
 	            //console.log(["id" e.target.id]);
