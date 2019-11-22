@@ -30,6 +30,9 @@ ul{list-style: none;}
 	position: absolute;
 
 }
+li:hover {
+    cursor: pointer;
+}
 /* Because the image has a z-index of -1, it will be placed behind the heading */
 .box .content li img{
 	width: 100%;
