@@ -9,40 +9,6 @@
 <script type = 'text/javascript' src = 'location.json'></script>
 <script>
 	window.onload =function () {
-		/*
-		//定位置 五个位置对应五个json对象,放入数组中,可以灵活的获取这些json对象
-		var json = [{
-			width: 300,
-			opacity: 0.4,
-			top: 70,
-			left: 50,
-			zIndex: 1
-		},{
-			width: 400,
-			opacity: 0.7,
-			top: 150,
-			left: 20,
-			zIndex: 2
-		},{
-			width: 650,
-			opacity: 1,
-			top: 200,
-			left: 150,
-			zIndex: 3
-		},{
-			width: 400,
-			opacity: 0.7,
-			top: 150,
-			left: 520,
-			zIndex: 2
-		},{
-			width: 300,
-			opacity: 0.4,
-			top: 70,
-			left: 650,
-			zIndex: 1
-		}];
-                */
 		refreshImageLocation(0);
 		function refreshImageLocation(index){
 			//默认情况下 第i个对应i-index个位置
@@ -63,7 +29,8 @@
 			}
 		}
 
-		var index = 0;
+		var index = 0; // 左邊開始顯示的圖片次號
+		var clt = "clt2"; //選擇清單編號
 		//设置点击箭头事件
 		$('#prev').onclick = function(){
 			// console.log('#next');
@@ -84,11 +51,16 @@
 
                //
 	       var menuName = {
-		       "clt0": "menuName0",
-		       "clt1": "menuName1",
-		       "clt2": "menuName2",
-		       "clt3": "menuName3",
-		       "clt4": "menuName4"
+		   "clt0": {"href": "https://www.facebook.com/trizbot/",
+			    "text": "相互交流開墾的 FB 新天地"},
+		   "clt1": {"href": "https://www.youtube.com/channel/UC9PlL0xG22lvL_pa7Sgdjkg/about",
+			    "text": "崇林創新與發明的實驗視頻"},
+		   "clt2": {"href": "http://blog.sina.com.cn/s/articlelist_5626475050_1_1.html", 
+			    "text": "多樣式的積木型創意機構車清單"},
+		   "clt3": {"href": "http://arm.cool.nctu.me/", 
+			    "text": "互動式機械臂演示網頁課程"},
+		   "clt4": {"href": "https://orcid.org/0000-0002-2996-6998", 
+			    "text": "崇林演講與發表論文選取清單"}
 	       };
 	       //
                var itmno = document.querySelector('#clt1');
@@ -107,11 +79,11 @@
                  //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
                  if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
                     // debug  //取id屬性字串最後一個字元
-		    var clt = e.target.parentNode.id;
+		    clt = e.target.parentNode.id;
 		    var  iMenu = parseInt(clt.charAt(clt.length-1));
 	            console.log([index, iMenu]);
 		    //  以關鍵字取得對應的內容
-		    console.log(clt, menuName[clt]);
+		    console.log(clt, menuName[clt].href);
 		    // 被點圖片會居於中央位置來顯示
 		    if(iMenu >= 2) {
 		      index=iMenu-2; // 01'2', 12'3', 23'4'
