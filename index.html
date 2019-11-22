@@ -94,10 +94,10 @@
 	            //console.log([index, iMenu]);
 		    //  以關鍵字取得對應的內容
 		    console.log(clt, menuName[clt].href);
-		  if( ((iMenu-2) == index) |= ((3+iMenu) == index) ) {
+	//	  if( ((iMenu-2) == index) |= ((3+iMenu) == index) ) {
 	            // 開啟分頁而不是另開視窗
-		    window.open(a.href);
-		  }else {
+	//	    window.open(a.href);
+	//	  }else {
 		    // 被點圖片會居於中央位置來顯示
 		    if(iMenu >= 2) {
 		      index=iMenu-2; // 01'2', 12'3', 23'4'
@@ -109,7 +109,7 @@
                     a.href = menuName[clt].href;
                     a.text = menuName[clt].text;
 		   }
-	         }
+	 //        }
                }, false);
 		
 	}
