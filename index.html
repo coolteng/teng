@@ -94,7 +94,8 @@
 	            //console.log([index, iMenu]);
 		    //  以關鍵字取得對應的內容
 		    console.log(clt, menuName[clt].href);
-			 if( ((iMenu-2) == index) |= ((3+iMenu) == index) ) 
+			 // Uncaught SyntaxError: Invalid left-hand side in assignment
+			 if( ((iMenu-2) == index) || ((3+iMenu) == index) ) 
 				console.log("selected"); 
 	//	  if( ((iMenu-2) == index) |= ((3+iMenu) == index) ) {
 	            // 開啟分頁而不是另開視窗
