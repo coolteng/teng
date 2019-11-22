@@ -30,6 +30,7 @@
 		}
 
 		var index = 0; // 左邊開始顯示的圖片次號
+		var iMenu = 0;
 		var clt = "clt2"; //選擇清單編號
 		//设置点击箭头事件
 		$('#prev').onclick = function(){
@@ -39,6 +40,15 @@
 				index = 0;
 			}
 			refreshImageLocation(index);
+			// 被點圖片會居於中央位置來顯示
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
 		}
 
 		$('#next').onclick = function(){
@@ -47,6 +57,15 @@
 				index = 4;
 			}
 			refreshImageLocation(index);
+			//
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
 		}
 
                //
@@ -63,11 +82,7 @@
 			    "text": "崇林演講與發表論文選取清單"}
 	       };
 	       //
-               var itmno = document.querySelector('#clt1');
-
-               itmno.addEventListener('click', function (e) {
-                 console.log('clt1 click');
-               }, false);
+               var a = document.getElementById('clta');
 	       // 取得容器
                var myList = document.getElementById('myList');
 
@@ -80,7 +95,7 @@
                  if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
                     // debug  //取id屬性字串最後一個字元
 		    clt = e.target.parentNode.id;
-		    var  iMenu = parseInt(clt.charAt(clt.length-1));
+		    iMenu = parseInt(clt.charAt(clt.length-1));
 	            console.log([index, iMenu]);
 		    //  以關鍵字取得對應的內容
 		    console.log(clt, menuName[clt].href);
@@ -91,7 +106,7 @@
 		      index=3+iMenu; // 34'0', 40'1'
 		    }
 		    refreshImageLocation(index);
-		    var a = document.getElementById('clta');
+		    //var a = document.getElementById('clta');
                     a.href = menuName[clt].href;
                     a.text = menuName[clt].text;
 		  }
