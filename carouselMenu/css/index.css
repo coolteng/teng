@@ -33,6 +33,37 @@ ul{list-style: none;}
 li:hover {
     cursor: pointer;
 }
+#clt {  position:absolute; top:13px; left:330px; 
+    height:400px;
+    width: 600px;
+}
+#clt-box2 {
+　  position:relative; top:10px; left:150px;
+    height: 40px;
+    width: 600px;
+    opacity: 0.7;
+}
+
+#clt-box2 a.listen-more-btn {
+    font-size: 36px;
+    font-weight: 700;
+    color: #f37108;
+    display: block;
+    background: unset;
+    text-align: center;
+    border-radius: 20px;
+    height: 41px;
+    line-height: 41px;
+    border: 1px solid #f37108;
+    zIndex: 5;
+}
+
+#clt-box2 a.listen-more-btn:hover{
+    background: linear-gradient(to bottom, #ffa600 50%, #f37108 100%);
+    color: red; 
+    display: block;
+    zIndex: 5;
+}
 /* Because the image has a z-index of -1, it will be placed behind the heading */
 .box .content li img{
 	width: 100%;
