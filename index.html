@@ -30,6 +30,17 @@
 		var index = 0; // 左邊開始顯示的圖片次號
 		var iMenu = 0;
 		var clt = "clt2"; //選擇清單編號
+		// 集中控管， 居於中央位置的圖片被點能進行超連結重導指向至其他網站
+		function setNewLocationAttrs() {
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;	
+		}
 		//設置左右點擊箭頭事件
 		$('#prev').onclick = function(){
 			// console.log('#next');
@@ -39,14 +50,7 @@
 			}
 			refreshImageLocation(index);
 			// 被點圖片會居於中央位置來顯示
-		    if(index <= 2) {
-		      iMenu=index+2; // 01'2', 12'3', 23'4'
-		    }else {
-		      iMenu=index-3; // 34'0', 40'1'
-		    }
-		    clt = 'clt' + iMenu.toString();
-                    a.href = menuName[clt].href;
-                    a.text = menuName[clt].text;
+		        setNewLocationAttrs();
 		}
 		$('#next').onclick = function(){
 			index--;
@@ -54,15 +58,8 @@
 				index = 4;
 			}
 			refreshImageLocation(index);
-			//
-		    if(index <= 2) {
-		      iMenu=index+2; // 01'2', 12'3', 23'4'
-		    }else {
-		      iMenu=index-3; // 34'0', 40'1'
-		    }
-		    clt = 'clt' + iMenu.toString();
-                    a.href = menuName[clt].href;
-                    a.text = menuName[clt].text;
+			// 被點圖片會居於中央位置來顯示
+		        setNewLocationAttrs();
 		}
                //
 	       var menuName = {
@@ -96,8 +93,9 @@
 		    console.log(clt, menuName[clt].href);
 			 // Uncaught SyntaxError: Invalid left-hand side in assignment
 			 //if( ((iMenu-2) == index) || ((3+iMenu) == index) ) 
+	          // 先確定是否居於中央位置的圖片被點，如是則進行超連結重導指向至其他網站
 		  if( (iMenu-2) == index || (3+iMenu) == index ) {
-	            // 開啟分頁而不是另開視窗
+	            // 開啟分頁方式進行重導指向動作，而不是另開視窗
 		    window.open(a.href);
 		  }else {
 		    // 被點圖片會居於中央位置來顯示
