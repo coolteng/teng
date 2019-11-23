@@ -18,8 +18,9 @@
 			console.log(liArr);
 			for(var i = 0; i < liArr.length; i++){
 				var li = liArr[i];
-				//getAttribute()取值属性
-                                console.log(li.id + "=>zoomin=" + li.getAttribute("zoomin"));
+				//getAttribute()取值属性，但每個皆為=null，沒搞頭
+                                //console.log(li.id + "=>zoomin=" + li.getAttribute("zoomin"));
+				console.log(li.id + "=>zoomin=" + li.zoomin);
 				//
 				var imgLocationIndex = i - index;
 				if(imgLocationIndex < 0){
