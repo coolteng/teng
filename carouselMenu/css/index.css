@@ -32,7 +32,7 @@ ul{list-style: none;}
 }
 /* 做出圖片緩慢放大的效果 */
 .zoomin {overflow:hidden;}
-.zoomin img{transform:scale(1,1);transition: all 1s ease-out;}
+.zoomin img{transform:scale(1,1);transition: all 0.5s ease-out;}
 .zoomin img:hover{transform:scale(1.2,1.2);}
 
 li:hover {
@@ -56,6 +56,7 @@ li:hover {
     font-weight: 700;
     color: pink;
     display: block;
+    width: 400px;
     background: blue;
     text-align: center;
     border-radius: 20px;
