@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="shortcut icon" href="/myPage/gif/coolteng.ico" type="image/x-icon" />
+<title>Document</title>
+<link rel="stylesheet" href="/teng/carouselMenu/css/index.css" />
+
+<script type = 'text/javascript' src = '/teng/carouselMenu/select.js'></script>
+<script type = 'text/javascript' src = '/teng/carouselMenu/animate.js'></script>
+<script type = 'text/javascript' src = '/teng/carouselMenu/location.json'></script>
+<script>
+	window.onload =function () {
+		refreshImageLocation(0);
+		function refreshImageLocation(index){
+			//預設情況下 第i個對應i-index個位置
+			var liArr = $('li');
+			console.log(liArr);
+			for(var i = 0; i < liArr.length; i++){
+				var li = liArr[i];
+				var locationIndex = i - index;
+				if(locationIndex < 0){
+					locationIndex += 5;
+				}
+				var locationDate = json[locationIndex];
+				console.log(locationDate);
+				animate(li, locationDate, null);
+			}
+		}
+		var index = 0; // 左邊開始顯示的圖片次號
+		var iMenu = 0;
+		var clt = "clt2"; //選擇清單編號
+		//設置左右點擊箭頭事件
+		$('#prev').onclick = function(){
+			// console.log('#next');
+			index++;
+			if(index == 5){ // 圖片總數目受定位json裡的組數限制
+				index = 0;
+			}
+			refreshImageLocation(index);
+			// 被點圖片會居於中央位置來顯示
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
+		}
+		$('#next').onclick = function(){
+			index--;
+			if(index < 0){
+				index = 4;
+			}
+			refreshImageLocation(index);
+			//
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
+		}
+               //
+	       var menuName = {
+		   "clt0": {"href": "https://www.facebook.com/trizbot/",
+			    "text": " 點此進入相互交流開墾的新天地 "},
+		   "clt1": {"href": "https://www.youtube.com/channel/UC9PlL0xG22lvL_pa7Sgdjkg",
+			    "text": " 點此進入創新與發明的實驗視頻 "},
+		   "clt2": {"href": "http://blog.sina.com.cn/s/articlelist_5626475050_1_1.html", 
+			    "text": " 點此進入多樣式積木創意機構車 "},
+		   "clt3": {"href": "http://arm.cool.nctu.me/", 
+			    "text": " 點此進入互動式機械臂演示課程 "},
+		   "clt4": {"href": "https://orcid.org/0000-0002-2996-6998", 
+			    "text": " 點此進入崇林演講與論文集清單 "}
+	       };
+	       //
+               var a = document.getElementById('clta');
+	       // 取得容器
+               var myList = document.getElementById('myList');
+               // 改讓外層 myList 來監聽 click 事件. parentNode
+               myList.addEventListener('click', function(e){
+		 //console.log(['tagName', e.target.tagName]); // "IMG"
+                 // 判斷目標元素若是 li 則執行 console.log
+		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
+                 //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
+                 if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
+                    // debug  //取id屬性字串最後一個字元
+		    clt = e.target.parentNode.id;
+		    iMenu = parseInt(clt.charAt(clt.length-1));
+	            //console.log([index, iMenu]);
+		    //  以關鍵字取得對應的內容
+		    console.log(clt, menuName[clt].href);
+			 // Uncaught SyntaxError: Invalid left-hand side in assignment
+			 //if( ((iMenu-2) == index) || ((3+iMenu) == index) ) 
+		  if( (iMenu-2) == index || (3+iMenu) == index ) {
+	            // 開啟分頁而不是另開視窗
+		    window.open(a.href);
+		  }else {
+		    // 被點圖片會居於中央位置來顯示
+		    if(iMenu >= 2) {
+		      index=iMenu-2; // 01'2', 12'3', 23'4'
+		    }else {
+		      index=3+iMenu; // 34'0', 40'1'
+		    }
+		    refreshImageLocation(index);
+		    //var a = document.getElementById('clta');
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
+		   }
+	         }
+               }, false);
+		
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		
+		<!-- 選單圖片設置 -->
+		<div class="content">
+			<ul  id="myList">
+				<li id="clt0"><img src="images/cltFACEBOOK.PNG" alt="" /></li>
+				<li id="clt1"><img src="images/tengYouTube.PNG" alt="" /></li>
+				<li id="clt2"><img src="images/cooltengSplash.png" alt="" /></li>
+				<li id="clt3"><img src="images/擷取m00.PNG" alt="" /></li>
+				<li id="clt4"><img src="images/cltORCID.PNG" alt="" /></li>
+			</ul>
+		</div>
+		
+		<!-- 左右箭頭設置 -->
+		<div class="control">
+			<a href="javascript:;" id="prev"></a>
+			<a href="javascript:;" id="next"></a>
+		</div>
+<div id="clt">
+  <div id="clt-box2">
+    <a id="clta" href="http://blog.sina.com.cn/s/articlelist_5626475050_1_1.htm" 
+       class="listen-more-btn" target="_blank">點此進入多樣式積木創意機構車</a>
+  </div>
+</div>
+</div>
+</body>
+</html>
