@@ -1,9 +1,9 @@
 *{margin: 0;padding: 0;}
 body {background-color: #4169E1;}
 ul{list-style: none;}
-/* 手機 box 畫布水平像素為1080 */
+/* 手機 box 畫布水平像素為980 */
 .box{
-	width: 1080px;
+	width: 970px;
 	margin: 5px auto;
 	position: relative;
 	background-color: #808000;
@@ -56,7 +56,7 @@ li:hover {
     font-weight: 700;
     color: red;
     display: block;
-    background: unset;
+    background: #808000;
     text-align: center;
     border-radius: 20px;
     height: 41px;
