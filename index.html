@@ -30,7 +30,7 @@
 		var index = 0; // 左邊開始顯示的圖片次號
 		var iMenu = 0;
 		var clt = "clt2"; //選擇清單編號
-		// 集中控管， 居於中央位置的圖片被點能進行超連結重導指向至其他網站
+		// 集中控管， 算出居於中央位置的圖片的編號並藉其重新設定Anchor元素的重要href與text屬性
 		function setNewLocationAttrs() {
 		    if(index <= 2) {
 		      iMenu=index+2; // 01'2', 12'3', 23'4'
