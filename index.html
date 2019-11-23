@@ -45,6 +45,10 @@
                     a.href = menuName[clt].href;
                     a.text = menuName[clt].text;	
 		}
+		function selectCltClass() {
+		    var itcls = $('.zoomin');
+		    console.log("class", itcls);	
+		}
 		//設置左右點擊箭頭事件
 		$('#prev').onclick = function(){
 			// console.log('#next');
@@ -52,6 +56,8 @@
 			if(index == 5){ // 圖片總數目受定位json裡的組數限制
 				index = 0;
 			}
+			// 
+			selectCltClass();
 			refreshImageLocation(index);
 			// 被點圖片會居於中央位置來顯示
 		        setNewLocationAttrs();
@@ -62,7 +68,9 @@
 				index = 4;
 			}
 			// 去除一个class属性
-			$('.zoomin').removeClass("zoomin");
+			// Uncaught TypeError: $(...).removeClass is not a function
+			//$('.zoomin').removeClass("zoomin");
+			selectCltClass();
 			//
 			refreshImageLocation(index);
 			// 被點圖片會居於中央位置來顯示
@@ -105,8 +113,8 @@
 	            // 開啟分頁方式進行重導指向動作，而不是另開視窗
 		    window.open(a.href);
 		  }else {
-	            // 先行去除一个class属性
-		    $('.zoomin').removeClass("zoomin");
+	            // *先行去除一个class属性
+		    //$('.zoomin').removeClass("zoomin");
 		    // 被點圖片會居於中央位置來顯示
 		    if(iMenu >= 2) {
 		      index=iMenu-2; // 01'2', 12'3', 23'4'
