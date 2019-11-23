@@ -14,10 +14,14 @@
 		refreshImageLocation(0);
 		function refreshImageLocation(index) {
 			//預設情況下 第i個對應i-index個位置
-			var liAttrs = $('li');
-			console.log(liAttrs);
-			for(var i = 0; i < liAttrs.length; i++){
-				var li = liAttrs[i];
+			var liArr = $('li');
+			console.log(liArr);
+			for(var i = 0; i < liArr.length; i++){
+				var li = liArr[i];
+				//
+				if (i == 2) {
+					li.setAttribute("class","zoomin");
+				}	
 				var imgLocationIndex = i - index;
 				if(imgLocationIndex < 0){
 					imgLocationIndex += 5;
@@ -57,6 +61,9 @@
 			if(index < 0){
 				index = 4;
 			}
+			// 去除一个class属性
+			$('.zoomin').removeClass("zoomin");
+			//
 			refreshImageLocation(index);
 			// 被點圖片會居於中央位置來顯示
 		        setNewLocationAttrs();
@@ -98,6 +105,8 @@
 	            // 開啟分頁方式進行重導指向動作，而不是另開視窗
 		    window.open(a.href);
 		  }else {
+	            // 先行去除一个class属性
+		    $('.zoomin').removeClass("zoomin");
 		    // 被點圖片會居於中央位置來顯示
 		    if(iMenu >= 2) {
 		      index=iMenu-2; // 01'2', 12'3', 23'4'
