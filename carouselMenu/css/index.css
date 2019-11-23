@@ -51,12 +51,12 @@ li:hover {
 }
 
 #clt-box2 a.listen-more-btn {
-    position: absolute; top:12px; left:198px;
+    position: absolute; top:12px; left:190px;
     font-size: 36px;
     font-weight: 700;
     color: pink;
     display: block;
-    width: 610px;
+    width: 560px;
     background: blue;
     text-align: center;
     border-radius: 20px;
