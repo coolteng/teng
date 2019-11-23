@@ -41,22 +41,22 @@ li:hover {
 
 #clt {  position::relative; top:0px; left:0px; 
     height:400px;
-    width: 8px;
+    width: 0px;
 }
 #clt-box2 {
 　  position:relative;
     height: 40px;
-    width: 30px;
+    width: 0px;
     opacity: 0.7;
 }
 
 #clt-box2 a.listen-more-btn {
-    position: absolute; top:12px; left:220px;
+    position: absolute; top:12px; left:199px;
     font-size: 36px;
     font-weight: 700;
     color: pink;
     display: block;
-    width: 500px;
+    width: 550px;
     background: blue;
     text-align: center;
     border-radius: 20px;
