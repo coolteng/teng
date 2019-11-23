@@ -12,19 +12,19 @@
 <script>
 	window.onload =function () {
 		refreshImageLocation(0);
-		function refreshImageLocation(index){
+		function refreshImageLocation(index) {
 			//預設情況下 第i個對應i-index個位置
-			var liArr = $('li');
-			console.log(liArr);
-			for(var i = 0; i < liArr.length; i++){
-				var li = liArr[i];
-				var locationIndex = i - index;
-				if(locationIndex < 0){
-					locationIndex += 5;
+			var liAttrs = $('li');
+			console.log(liAttrs);
+			for(var i = 0; i < liAttrs.length; i++){
+				var li = liAttrs[i];
+				var imgLocationIndex = i - index;
+				if(imgLocationIndex < 0){
+					imgLocationIndex += 5;
 				}
-				var locationDate = json[locationIndex];
-				console.log(locationDate);
-				animate(li, locationDate, null);
+				var locationSettings = json[imgLocationIndex];
+				console.log(locationSettings);
+				animate(li, locationSettings, null);
 			}
 		}
 		var index = 0; // 左邊開始顯示的圖片次號
