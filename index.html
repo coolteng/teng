@@ -19,15 +19,18 @@
 			for(var i = 0; i < liArr.length; i++){
 				var li = liArr[i];
 				//
-				if (i == 2) {
-					li.setAttribute("class","zoomin");
-				}	
+					
 				var imgLocationIndex = i - index;
 				if(imgLocationIndex < 0){
 					imgLocationIndex += 5;
 				}
 				var locationSettings = json[imgLocationIndex];
 				console.log(locationSettings);
+				
+				if (locationSettings.opacity == 1) {
+					li.setAttribute("class", "zoomin");
+				}
+				//
 				animate(li, locationSettings, null);
 			}
 		}
