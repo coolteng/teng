@@ -18,8 +18,9 @@
 			console.log(liArr);
 			for(var i = 0; i < liArr.length; i++){
 				var li = liArr[i];
+				//getAttribute()取值属性
+                                console.log(li.id + "=>zoomin=" + li.getAttribute("zoomin"));
 				//
-					
 				var imgLocationIndex = i - index;
 				if(imgLocationIndex < 0){
 					imgLocationIndex += 5;
