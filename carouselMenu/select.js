@@ -1,16 +1,17 @@
 	function $(select){
 		if (typeof select != 'string') {
-			console.log('传入的参数有误');			
+			console.log('報錯：傳入參數需具 string 型態的變數');			
 			return null;
 		}
 		var firstChar = select.charAt(0);
+		var elseChars = select.substr(1);
 		switch(firstChar){
 			case '#':
-				return document.getElementById(select.substr(1));
+				return document.getElementById(elseChars);
 			break;
 			case '.':
 				if (document.getElementsByClassName){
-					return document.getElementsByClassName(select.substr(1));
+					return document.getElementsByClassName(elseChars);
 				} else {
 					var result = [];
 					var allElemnts = document.getElementsByTagName('*');
