@@ -1,15 +1,15 @@
 *{margin: 0;padding: 0;}
 body {background-color: #4169E1;}
 ul{list-style: none;}
-/*大盒子*/
+/* 手機 box 畫布水平像素為1080 */
 .box{
-	width: 970px;
+	width: 1080px;
 	margin: 5px auto;
 	position: relative;
 	background-color: #808000;
 }
 
-/*左右箭头*/
+/*左右箭頭*/
 #next, #prev{
 	position: absolute;
 	width: 76px;
@@ -26,14 +26,19 @@ ul{list-style: none;}
 	background: url(../images/prev_1.png) no-repeat 0 0;
 }
 
-
 .box .content li{
 	position: absolute;
 
 }
+/* 做出圖片緩慢放大的效果 */
+.zoomin {overflow:hidden;}
+.zoomin img{transform:scale(1,1);transition: all 1s ease-out;}
+.zoomin img:hover{transform:scale(1.2,1.2);}
+
 li:hover {
     cursor: pointer;
 }
+
 #clt {  position::relative; top:0px; left:0px; 
     height:400px;
     width: 700px;
