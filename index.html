@@ -9,6 +9,17 @@
 <script type = 'text/javascript' src = '/teng/carouselMenu/select.js'></script>
 <script type = 'text/javascript' src = '/teng/carouselMenu/animate.js'></script>
 <script type = 'text/javascript' src = '/teng/carouselMenu/location.json'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery(".fbRightBox").hover(
+            function(){
+                jQuery(this).stop().animate({right: "0"}, "medium");
+            }, function(){
+                jQuery(this).stop().animate({right: "-400px"}, "medium");
+        }, 500);
+    });
+</script>
 <script>
 	window.onload =function () {
 		refreshImageLocation(0);
@@ -164,6 +175,12 @@
     <a id="clta" href="http://blog.sina.com.cn/s/articlelist_5626475050_1_1.htm" 
        class="listen-more-btn" target="_blank">點此進入多樣式積木創意機構車</a>
   </div>
+</div>
+		<div class="fbRightBox">
+<div>
+<iframe frameborder="0" scrolling="no" 
+src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/trizbot&width=400&height=500&colorscheme=light&show_faces=false&header=true&stream=true&show_border=true" style="border:none;overflow:hidden;width:400px;height:500px;"></iframe>
+</div>
 </div>
 </div>
 </body>
