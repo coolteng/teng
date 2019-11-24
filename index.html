@@ -25,7 +25,7 @@
 		refreshImageLocation(0);
 		function refreshImageLocation(index) {
 			//預設情況下 第i個對應i-index個位置
-			var liArr = $('li');
+			var liArr = clt$('li');
 			console.log(liArr);
 			for(var i = 0; i < liArr.length; i++){
 				var li = liArr[i];
@@ -65,11 +65,11 @@
                     a.text = menuName[clt].text;	
 		}
 		function selectCltClass() {
-		    var itcls = _$('.zoomin');
+		    var itcls = clt$('.class');
 		    console.log("class", itcls);	
 		}
 		//設置左右點擊箭頭事件
-		_$('#prev').onclick = function(){
+		clt$('#prev').onclick = function(){
 			// console.log('#next');
 			index++;
 			if(index == 5){ // 圖片總數目受定位json裡的組數限制
@@ -81,7 +81,7 @@
 			// 被點圖片會居於中央位置來顯示
 		        setNewLocationAttrs();
 		}
-		_$('#next').onclick = function(){
+		clt$('#next').onclick = function(){
 			index--;
 			if(index < 0){
 				index = 4;
