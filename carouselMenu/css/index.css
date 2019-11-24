@@ -77,7 +77,19 @@ li:hover {
 	width: 100%;
 	z-index: -1;
 }
-
+.fbRightBox{
+    background: url(網頁側邊滑出FB粉絲頁的文字豎寫標籤.png) no-repeat scroll left center transparent!important;
+    display: block;
+    float: right;
+    height: 150px;
+    width: 400px;
+    position: fixed;
+    z-index: 100;
+    top: 120px;
+    right: -400px;
+    padding: 0 0px 0 46px;
+    margin: 0;
+}
 /*可以通过css设置定位
 .box .content li.li1{
 	width: 300px;
