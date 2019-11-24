@@ -65,11 +65,11 @@
                     a.text = menuName[clt].text;	
 		}
 		function selectCltClass() {
-		    var itcls = $('.zoomin');
+		    var itcls = _$('.zoomin');
 		    console.log("class", itcls);	
 		}
 		//設置左右點擊箭頭事件
-		$('#prev').onclick = function(){
+		_$('#prev').onclick = function(){
 			// console.log('#next');
 			index++;
 			if(index == 5){ // 圖片總數目受定位json裡的組數限制
@@ -81,7 +81,7 @@
 			// 被點圖片會居於中央位置來顯示
 		        setNewLocationAttrs();
 		}
-		$('#next').onclick = function(){
+		_$('#next').onclick = function(){
 			index--;
 			if(index < 0){
 				index = 4;
