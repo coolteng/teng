@@ -1,4 +1,4 @@
-	function $(select){
+	function _$(select){
 		if (typeof select != 'string') {
 			console.log('報錯：傳入參數需具 string 型態的變數');			
 			return null;
