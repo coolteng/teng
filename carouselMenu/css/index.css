@@ -1,6 +1,10 @@
 *{margin: 0;padding: 0;}
 /* 隱藏超連結底線 */
 a {text-decoration:none;}
+a.readmore{float:left;}
+a.readmore{font-size:1.125rem;border:1px dashed #d2d2d2;background:#fff;transition:all .3s ease-out;-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;padding:5px 20px;}
+.readmore:hover:hover{color:#fff;background:#5e7380;border:1px solid #5e7380;text-decoration:none;}
+
 body {background-color: #57503d;}
 ul{list-style: none;}
 /* 手機 box 畫布水平像素為980 */
