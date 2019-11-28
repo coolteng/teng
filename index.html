@@ -107,6 +107,20 @@
 			// 被點圖片會居於中央位置來顯示
 		        setNewLocationAttrs();
 		}
+		//
+		var cltFlag = 0;
+		clt$('#qrcode').onclick = function(){
+		    var qrCode = clt$('#qrcode');
+		    if (cltFlag == 0) {
+		        qrCode.style.height = '180px';
+		        qrCode.style.width = '180px'; 
+	                cltFlag = 1;
+                    }else {
+		        qrCode.style.height = '64px';
+		        qrCode.style.width = '64px'; 
+	                cltFlag = 0;
+                    }
+		}
                //
 	       var menuName = {
 		   "clt0": {"href": "https://www.facebook.com/trizbot/",
@@ -166,8 +180,8 @@
 <body>
 	<div class="box">
 	<div><img src="/teng/carouselMenu/css/coolteng含框64.png" alt="鄧崇林的五指搧入口網站" /></div>
-	<div  style="float: right;">
-	<img class="qrcode" src="/teng/carouselMenu/images/cltQRCode180.PNG"  width="64" height="64" />
+	<div  style="float: right; right:0px; top:0px">
+	<img id="qrcode" src="/teng/carouselMenu/images/cltQRCode180.PNG"  width="64" height="64" />
 	</div>	
 		<!-- 選單圖片設置 -->
 		<div class="content">
