@@ -83,6 +83,11 @@ li:hover {
 	width: 100%;
 	z-index: -1;
 }
+#qrcode:hover {
+    cursor: pointer;
+	z-index: 100;
+	/*float: down;    height: 180px;    width: 180px; */
+}
 .fbRightBox{
     background: url(網頁側邊滑出FB粉絲頁的文字豎寫標籤.png) no-repeat scroll left center transparent!important;
     display: block;
