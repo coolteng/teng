@@ -18,166 +18,38 @@
 <link rel="stylesheet" href="/teng/carouselMenu/css/index.css" />
 <!--    匯入FontAwesome   -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+<script src="http://mis101bird.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 <script type = 'text/javascript' src = '/teng/carouselMenu/select.js'></script>
 <script type = 'text/javascript' src = '/teng/carouselMenu/animate.js'></script>
 <script type = 'text/javascript' src = '/teng/carouselMenu/location.json'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        jQuery(".fbRightBox").hover(
-            function(){
-                jQuery(this).stop().animate({right: "0"}, "medium");
-            }, function(){
-                jQuery(this).stop().animate({right: "-400px"}, "medium");
-        }, 500);
-    });
-</script>
-<script>
-	window.onload =function () {
-		refreshImageLocation(0);
-		function refreshImageLocation(index) {
-			//預設情況下 第i個對應i-index個位置
-			var liArr = clt$('li');
-			console.log(liArr);
-			for(var i = 0; i < liArr.length; i++){
-				var li = liArr[i];
-				//getAttribute()取值属性，
-                                console.log(li.id + "=>class=" + li.getAttribute("class"));
-				if (li.getAttribute("class") == "zoomin") {
-					li.setAttribute("class",null);
-				}
-				// console.log("li.class=" + li.class);每個皆為 undefined，沒搞頭
-				//
-				var imgLocationIndex = i - index;
-				if(imgLocationIndex < 0){
-					imgLocationIndex += 5;
-				}
-				var locationSettings = json[imgLocationIndex];
-				console.log(locationSettings);
-				
-				if (locationSettings.opacity == 1) {
-					li.setAttribute("class", "zoomin");
-				}
-				//
-				animate(li, locationSettings, null);
-			}
-		}
-		var index = 0; // 左邊開始顯示的圖片次號
-		var iMenu = 0;
-		var clt = "clt2"; //選擇清單編號
-		// 集中控管， 算出居於中央位置的圖片的編號並藉其重新設定Anchor元素的重要href與text屬性
-		function setNewLocationAttrs() {
-		    if(index <= 2) {
-		      iMenu=index+2; // 01'2', 12'3', 23'4'
-		    }else {
-		      iMenu=index-3; // 34'0', 40'1'
-		    }
-		    clt = 'clt' + iMenu.toString();
-                    a.href = menuName[clt].href;
-                    a.text = menuName[clt].text;	
-		}
-		function selectCltClass() {
-		    var itcls = clt$('.class');
-		    console.log("class", itcls);	
-		}
-		//設置左右點擊箭頭事件
-		clt$('#prev').onclick = function(){
-			// console.log('#next');
-			index++;
-			if(index == 5){ // 圖片總數目受定位json裡的組數限制
-				index = 0;
-			}
-			// 
-			selectCltClass();
-			refreshImageLocation(index);
-			// 被點圖片會居於中央位置來顯示
-		        setNewLocationAttrs();
-		}
-		clt$('#next').onclick = function(){
-			index--;
-			if(index < 0){
-				index = 4;
-			}
-			// 去除一个class属性
-			// Uncaught TypeError: $(...).removeClass is not a function
-			//$('.zoomin').removeClass("zoomin");
-			selectCltClass();
-			//
-			refreshImageLocation(index);
-			// 被點圖片會居於中央位置來顯示
-		        setNewLocationAttrs();
-		}
-		//
-		var cltFlag = 0;
-		clt$('#qrcode').onclick = function(){
-		    var qrCode = clt$('#qrcode');
-		    if (cltFlag == 0) {
-		        qrCode.style.height = '180px';
-		        qrCode.style.width = '180px'; 
-	                cltFlag = 1;
-                    }else {
-		        qrCode.style.height = '64px';
-		        qrCode.style.width = '64px'; 
-	                cltFlag = 0;
-                    }
-		}
-               //
-	       var menuName = {
-		   "clt0": {"href": "https://www.facebook.com/trizbot/",
-			    "text": " 點此進入相互交流開墾的新天地 "},
-		   "clt1": {"href": "https://www.youtube.com/channel/UC9PlL0xG22lvL_pa7Sgdjkg",
-			    "text": " 點此進入創新與發明的實驗視頻 "},
-		   "clt2": {"href": "http://blog.sina.com.cn/s/articlelist_5626475050_1_1.html", 
-			    "text": " 點此進入多樣式積木創意機構車 "},
-		   "clt3": {"href": "https://arm.cool.nctu.me/", 
-			    "text": " 點此進入互動式機械臂演示課程 "},
-		   "clt4": {"href": "https://orcid.org/0000-0002-2996-6998", 
-			    "text": " 點此進入崇林演講與論文集清單 "}
-	       };
-	       //
-               var a = document.getElementById('clta');
-	       // 取得容器
-               var myList = document.getElementById('myList');
-               // 改讓外層 myList 來監聽 click 事件. parentNode
-               myList.addEventListener('click', function(e){
-		 //console.log(['tagName', e.target.tagName]); // "IMG"
-                 // 判斷目標元素若是 li 則執行 console.log
-		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
-                 //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
-                 if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
-                    // debug  //取id屬性字串最後一個字元
-		    clt = e.target.parentNode.id;
-		    iMenu = parseInt(clt.charAt(clt.length-1));
-	            //console.log([index, iMenu]);
-		    //  以關鍵字取得對應的內容
-		    console.log(clt, menuName[clt].href);
-			 // Uncaught SyntaxError: Invalid left-hand side in assignment
-			 //if( ((iMenu-2) == index) || ((3+iMenu) == index) ) 
-	          // 先確定是否居於中央位置的圖片被點，如是則進行超連結重導指向至其他網站
-		  if( (iMenu-2) == index || (3+iMenu) == index ) {
-	            // 開啟分頁方式進行重導指向動作，而不是另開視窗
-		    window.open(a.href);
-		  }else {
-	            // *先行去除一个class属性
-		    //$('.zoomin').removeClass("zoomin");
-		    // 被點圖片會居於中央位置來顯示
-		    if(iMenu >= 2) {
-		      index=iMenu-2; // 01'2', 12'3', 23'4'
-		    }else {
-		      index=3+iMenu; // 34'0', 40'1'
-		    }
-		    refreshImageLocation(index);
-		    //var a = document.getElementById('clta');
-                    a.href = menuName[clt].href;
-                    a.text = menuName[clt].text;
-		   }
-	         }
-               }, false);
-		
-	}
-</script>
 </head>
 <body>
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+  <button class="dl-trigger">Open Menu</button>
+  <ul class="dl-menu">
+    <li><a href="http://blog.sina.com.cn/softeng">鄧崇林的博客</a></li>
+    <li><a href="#">關於我</a>
+      <ul class="dl-submenu"><li class="dl-back"></li>
+        <li><img src="C://Users/3Dprinter/Pictures/coolteng-180.jpg" alt="鄧崇林畫的頭像" />
+	    <h4 align="center"><span style="color:orange;">鄧 崇 林</span></h4>
+	    <p>研究中華古科技、近代物理、自動控制、機器人、和創新與發明等多元集成式發展</p>
+        </li>
+        <li><a href="mailto:coolteng@gmail.com"><i class="fa fa-fw fa-envelope"></i> 採用 Email 聯絡我</a></li>
+        <li><a href="https://github.com/coolteng"><i class="fa fa-fw fa-github"></i> 我的 GitHub 分享</a></li>
+        <li><a href="https://www.researchgate.net/profile/Chung_Lin_Teng/publications"><i class="fa fa-fw fa-researchgate"></i> CodePen</a></li>
+      </ul><!-- /.dl-submenu -->
+    </li>
+    <li><a href="#">其他類的PO文</a>
+	<ul class="dl-submenu"><li class="dl-back"></li>
+		<li><a href="http://blog.sina.com.cn/s/articlelist_5626475050_7_1.html">文學類創作 <i class='fa fa-arrow-circle-right'></i></a></li>
+		<li><a href="http://blog.sina.com.cn/s/articlelist_5626475050_8_1.html">自學攻略</a></li>
+		<li><a href="https://www.slideshare.net/coolteng/ss-182691526">自謀科學研究</a></li>
+	</ul>
+    </li>
+    <li><a href="http://mis101bird.github.io/">感謝??????無私分享</a></li>
+</ul><!-- /.dl-menu -->
+</nav>
 	<div class="box">
 	<div><img src="/teng/carouselMenu/css/coolteng含框64.png" alt="鄧崇林的五指搧入口網站" /></div>
 	<div  style="position:absolute; right:0px; top:0px">
@@ -222,5 +94,6 @@ src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/
 </div>
 		
 </div>
+<script type = 'text/javascript' src = '/teng/carouselMenu/mis101bird.clt.js'></script>
 </body>
 </html>
