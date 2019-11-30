@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="shortcut icon" href="/myPage/gif/coolteng.ico" type="image/x-icon" />
+<title>鄧崇林的創新入口網站</title>
+<link rel="canonical" href="https://arm.cool.nctu.me/teng/" />
+<meta name="title" content="鄧崇林的創新入口網站" />
+<meta name="description" content="鄧崇林的創新入口網站為五張圖片選址點單，能分別進入「創新與發明視頻」、「創意好好玩FB」、「創意機械臂」、「崇林演講與論文集」、「創意機構車」等不同學習目的所布置的網路資源" />
+<meta property="fb:app_id" content="214442589536" />
+<meta property="og:site_name" content="鄧崇林的創新網站"/>
+<meta property="og:title" content="鄧崇林的五址搧(五指山)入口網站" />
+<meta property="og:url" content="https://arm.cool.nctu.me/teng/index.html"  />
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="鄧崇林的創新入口網站為五張圖片選址點單，能分別進入「創新與發明視頻」、「創意好好玩FB」、「創意機械臂」、「崇林演講與論文集」、「創意機構車」等不同學習目的所布置的網路資源" />
+<meta property="og:image" content="https://arm.cool.nctu.me/teng/carouselMenu/images/coolteng5figEntrySiteNEWqr.PNG" />
+
+<link rel="stylesheet" href="/teng/carouselMenu/css/index.css" />
+<!--    匯入FontAwesome   -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+<script type = 'text/javascript' src = '/teng/carouselMenu/select.js'></script>
+<script type = 'text/javascript' src = '/teng/carouselMenu/animate.js'></script>
+<script type = 'text/javascript' src = '/teng/carouselMenu/location.json'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery(".fbRightBox").hover(
+            function(){
+                jQuery(this).stop().animate({right: "0"}, "medium");
+            }, function(){
+                jQuery(this).stop().animate({right: "-400px"}, "medium");
+        }, 500);
+    });
+</script>
+<script>
+	window.onload =function () {
+		refreshImageLocation(0);
+		function refreshImageLocation(index) {
+			//預設情況下 第i個對應i-index個位置
+			var liArr = clt$('li');
+			console.log(liArr);
+			for(var i = 0; i < liArr.length; i++){
+				var li = liArr[i];
+				//getAttribute()取值属性，
+                                console.log(li.id + "=>class=" + li.getAttribute("class"));
+				if (li.getAttribute("class") == "zoomin") {
+					li.setAttribute("class",null);
+				}
+				// console.log("li.class=" + li.class);每個皆為 undefined，沒搞頭
+				//
+				var imgLocationIndex = i - index;
+				if(imgLocationIndex < 0){
+					imgLocationIndex += 5;
+				}
+				var locationSettings = json[imgLocationIndex];
+				console.log(locationSettings);
+				
+				if (locationSettings.opacity == 1) {
+					li.setAttribute("class", "zoomin");
+				}
+				//
+				animate(li, locationSettings, null);
+			}
+		}
+		var index = 0; // 左邊開始顯示的圖片次號
+		var iMenu = 0;
+		var clt = "clt2"; //選擇清單編號
+		// 集中控管， 算出居於中央位置的圖片的編號並藉其重新設定Anchor元素的重要href與text屬性
+		function setNewLocationAttrs() {
+		    if(index <= 2) {
+		      iMenu=index+2; // 01'2', 12'3', 23'4'
+		    }else {
+		      iMenu=index-3; // 34'0', 40'1'
+		    }
+		    clt = 'clt' + iMenu.toString();
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;	
+		}
+		function selectCltClass() {
+		    var itcls = clt$('.class');
+		    console.log("class", itcls);	
+		}
+		//設置左右點擊箭頭事件
+		clt$('#prev').onclick = function(){
+			// console.log('#next');
+			index++;
+			if(index == 5){ // 圖片總數目受定位json裡的組數限制
+				index = 0;
+			}
+			// 
+			selectCltClass();
+			refreshImageLocation(index);
+			// 被點圖片會居於中央位置來顯示
+		        setNewLocationAttrs();
+		}
+		clt$('#next').onclick = function(){
+			index--;
+			if(index < 0){
+				index = 4;
+			}
+			// 去除一个class属性
+			// Uncaught TypeError: $(...).removeClass is not a function
+			//$('.zoomin').removeClass("zoomin");
+			selectCltClass();
+			//
+			refreshImageLocation(index);
+			// 被點圖片會居於中央位置來顯示
+		        setNewLocationAttrs();
+		}
+		//
+		var cltFlag = 0;
+		clt$('#qrcode').onclick = function(){
+		    var qrCode = clt$('#qrcode');
+		    if (cltFlag == 0) {
+		        qrCode.style.height = '180px';
+		        qrCode.style.width = '180px'; 
+	                cltFlag = 1;
+                    }else {
+		        qrCode.style.height = '64px';
+		        qrCode.style.width = '64px'; 
+	                cltFlag = 0;
+                    }
+		}
+               //
+	       var menuName = {
+		   "clt0": {"href": "https://www.facebook.com/trizbot/",
+			    "text": " 點此進入相互交流開墾的新天地 "},
+		   "clt1": {"href": "https://www.youtube.com/channel/UC9PlL0xG22lvL_pa7Sgdjkg",
+			    "text": " 點此進入創新與發明的實驗視頻 "},
+		   "clt2": {"href": "http://blog.sina.com.cn/s/articlelist_5626475050_1_1.html", 
+			    "text": " 點此進入多樣式積木創意機構車 "},
+		   "clt3": {"href": "https://arm.cool.nctu.me/", 
+			    "text": " 點此進入互動式機械臂演示課程 "},
+		   "clt4": {"href": "https://orcid.org/0000-0002-2996-6998", 
+			    "text": " 點此進入崇林演講與論文集清單 "}
+	       };
+	       //
+               var a = document.getElementById('clta');
+	       // 取得容器
+               var myList = document.getElementById('myList');
+               // 改讓外層 myList 來監聽 click 事件. parentNode
+               myList.addEventListener('click', function(e){
+		 //console.log(['tagName', e.target.tagName]); // "IMG"
+                 // 判斷目標元素若是 li 則執行 console.log
+		 // Uncaught TypeError: Cannot read property 'tagName' of undefined
+                 //if( e.target.parentNode.tagName.toLowerCase() == 'li' ){
+                 if( e.target.parentNode.nodeName.toLowerCase() == 'li' ){
+                    // debug  //取id屬性字串最後一個字元
+		    clt = e.target.parentNode.id;
+		    iMenu = parseInt(clt.charAt(clt.length-1));
+	            //console.log([index, iMenu]);
+		    //  以關鍵字取得對應的內容
+		    console.log(clt, menuName[clt].href);
+			 // Uncaught SyntaxError: Invalid left-hand side in assignment
+			 //if( ((iMenu-2) == index) || ((3+iMenu) == index) ) 
+	          // 先確定是否居於中央位置的圖片被點，如是則進行超連結重導指向至其他網站
+		  if( (iMenu-2) == index || (3+iMenu) == index ) {
+	            // 開啟分頁方式進行重導指向動作，而不是另開視窗
+		    window.open(a.href);
+		  }else {
+	            // *先行去除一个class属性
+		    //$('.zoomin').removeClass("zoomin");
+		    // 被點圖片會居於中央位置來顯示
+		    if(iMenu >= 2) {
+		      index=iMenu-2; // 01'2', 12'3', 23'4'
+		    }else {
+		      index=3+iMenu; // 34'0', 40'1'
+		    }
+		    refreshImageLocation(index);
+		    //var a = document.getElementById('clta');
+                    a.href = menuName[clt].href;
+                    a.text = menuName[clt].text;
+		   }
+	         }
+               }, false);
+		
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+	<div><img src="/teng/carouselMenu/css/coolteng含框64.png" alt="鄧崇林的五指搧入口網站" /></div>
+	<div  style="position:absolute; right:0px; top:0px">
+	<img id="qrcode" src="/teng/carouselMenu/images/cltQRCode180.PNG"  width="64" height="64" />
+	</div>	
+		<!-- 選單圖片設置 -->
+		<div class="content">
+			<ul  id="myList">
+				<li id="clt0"><img src="/teng/carouselMenu/images/cltFACEBOOK.PNG" alt="" /></li>
+				<li id="clt1"><img src="/teng/carouselMenu/images/tengYouTube.PNG" alt="" /></li>
+				<li id="clt2" class="zoomin"><img src="/teng/carouselMenu/images/carSplashQRCode .png" alt="" /></li>
+				<li id="clt3"><img src="/teng/carouselMenu/images/擷取機械臂畫面.PNG" alt="" /></li>
+				<li id="clt4"><img src="/teng/carouselMenu/images/cltORCID.PNG" alt="" /></li>
+			</ul>
+		</div>
+		
+		<!-- 左右箭頭設置 -->
+		<div class="control">
+			<a href="javascript:;" id="prev"></a>
+			<a href="javascript:;" id="next"></a>
+		</div>
+<div id="clt">
+  <div id="clt-box2">
+    <a id="clta" href="http://blog.sina.com.cn/s/articlelist_5626475050_1_1.htm" 
+       class="listen-more-btn" target="_blank">點此進入多樣式積木創意機構車</a>
+  </div>
+</div>
+<div class="fbRightBox">
+  <div>
+    <iframe frameborder="0" scrolling="no" 
+src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/trizbot&width=400&height=500&colorscheme=light&show_faces=false&header=true&stream=true&show_border=true" style="border:none;overflow:hidden;width:400px;height:500px;"></iframe>
+  </div>
+</div>
+		
+<div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3" data-url="https://arm.cool.nctu.me/teng/" data-color="default" data-size="large" data-count="false" style="display: none;">
+</div>
+<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>		
+<div style="float: left;">
+<a href="https://www.facebook.com/share.php?v=4&amp;src=bm&amp;u=https://arm.cool.nctu.me/teng/index.html&amp;t=鄧崇林的創新五址搧(五指山)入口網站" 
+   onclick="window.open(this.href,&quot;sharer&quot;,&quot;toolbar=0,status=0,width=626,height=436&quot;); return false;"
+   rel="nofollow" target="_blank" title="Share this on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+</div>
+		
+</div>
+</body>
+</html>
